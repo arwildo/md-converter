@@ -1,14 +1,19 @@
 #!/bin/python3
 from argparse import ArgumentParser
+from selenium import webdriver
 
 FLAGS = None
 SAVED_DIR = "C:\My App\converted-files\/"
+driver = webdriver.Chrome('chrome_driver.exe')
 
 def converter(file_content):
     output_content = ""
     output_content += ("```python \n" + file_content + "\n```")
     return output_content
 
+def open_on_browser(file_path):
+    driver.get(file_path)
+    
 
 if __name__ == '__main__':
     # read input flag
@@ -30,9 +35,12 @@ if __name__ == '__main__':
 
     # save the file
     # TODO: add regex to filter get_name for win tab
-    get_name = data_input
-    te = open(SAVED_DIR + data_input +  ".md", "x")
+    get_name = SAVED_DIR + data_input +  ".md"
+    te = open(get_name, "x")
     te.write(converted)
-
     te.close()
+
+    # open browser
+    get_name = str(get_name)
+    open_on_browser(get_name)
 
