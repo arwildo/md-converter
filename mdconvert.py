@@ -1,5 +1,5 @@
 #!/bin/python3
-import argparse
+from argparse import ArgumentParser
 
 FLAGS = None
 
@@ -9,7 +9,7 @@ def converter(file_contents):
 
 if __name__ == '__main__':
     # read input flag
-    parser = argparse.ArgumentParser()
+    parser = ArgumentParser()
     parser.add_argument(
         '-f',
         type=str,
