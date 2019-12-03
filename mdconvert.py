@@ -2,9 +2,10 @@
 from argparse import ArgumentParser
 
 FLAGS = None
+output_content = ""
 
-def converter(file_contents):
-    print("```python \n" + file_contents + "\n```")
+def converter(file_content):
+    output = ("```python \n" + file_content + "\n```")
 
 
 if __name__ == '__main__':
@@ -19,9 +20,9 @@ if __name__ == '__main__':
     data_input = (str(FLAGS.f))
 
     # load file
-    with open(data_input) as fr:
-        file_contents = fr.read()
+    with open(data_input) as file_content:
+        #call the function
+        converter(file_content)
+        print(output_content)
 
-    # call the function
-    converter(file_contents)
 
